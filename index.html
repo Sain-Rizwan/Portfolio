@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techzobers | Sain Rizwan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#020617;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND GLOW */
+body::before{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#6366f1,transparent);
+    top:-200px;
+    left:-200px;
+    filter:blur(150px);
+    opacity:.4;
+}
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#ec4899,transparent);
+    bottom:-200px;
+    right:-200px;
+    filter:blur(150px);
+    opacity:.4;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    display:flex;
+    justify-content:space-between;
+    padding:15px 40px;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.3);
+    z-index:999;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:160px 20px 120px;
+}
+.hero h1{
+    font-size:52px;
+    background:linear-gradient(90deg,#6366f1,#06b6d4,#ec4899);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.hero p{
+    max-width:700px;
+    margin:20px auto;
+    color:#cbd5f5;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin:10px;
+    padding:14px 28px;
+    border-radius:12px;
+    background:linear-gradient(90deg,#6366f1,#ec4899);
+    text-decoration:none;
+    color:#fff;
+    transition:.3s;
+}
+.btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px rgba(236,72,153,0.5);
+}
+
+/* SECTION */
+.section{padding:90px 10%}
+.section h2{
+    margin-bottom:40px;
+    font-size:30px;
+    background:linear-gradient(90deg,#06b6d4,#ec4899);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* CARD BASE */
+.card, .service, .step, .testimonial{
+    background:rgba(255,255,255,0.05);
+    border-radius:16px;
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:.4s;
+}
+
+/* PROJECT CARDS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+.card-content{padding:20px}
+.card:hover{
+    transform:translateY(-12px) scale(1.02);
+    box-shadow:0 0 40px rgba(99,102,241,0.4);
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.service{
+    padding:25px;
+    position:relative;
+}
+.service::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:16px;
+    background:linear-gradient(90deg,#6366f1,#ec4899,#06b6d4);
+    opacity:0;
+    transition:.4s;
+    z-index:-1;
+}
+.service:hover::before{
+    opacity:.2;
+}
+.service:hover{
+    transform:translateY(-10px);
+}
+
+/* PROCESS */
+.process{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+.step{
+    padding:20px;
+}
+.step:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(6,182,212,0.4);
+}
+
+/* TESTIMONIAL */
+.testimonials{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.testimonial{
+    padding:20px;
+}
+.testimonial:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(236,72,153,0.4);
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    padding:100px 20px;
+    background:linear-gradient(135deg,#6366f1,#ec4899,#06b6d4);
+}
+
+/* FLOAT BUTTON */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    padding:15px;
+    border-radius:50%;
+    text-decoration:none;
+}
+
+/* ANIMATION */
+.hidden{opacity:0;transform:translateY(40px);transition:.8s}
+.show{opacity:1;transform:translateY(0)}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#94a3b8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 15px;
+        padding: 0 10px;
+    }
+
+    .section {
+        padding: 70px 5%;
+    }
+
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 120px 15px 80px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .btn {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .section h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .projects,
+    .services,
+    .process,
+    .testimonials {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        height: 160px;
+    }
+
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .section {
+        padding: 60px 15px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Techzobers</h2>
+</nav>
+
+<section class="hero">
+    <h1>Sain Rizwan / Techzobers</h1>
+    <p>
+        I help businesses build high-converting websites, grow online with SEO,
+        marketing, and scalable applications.
+    </p>
+
+    <a class="btn" href="https://wa.me/9172340474">Start Project</a>
+    <a class="btn" href="mailto:sainrizwan1@gmail.com">Email</a>
+</section>
+
+<section class="section hidden">
+    <h2>Selected Work</h2>
+    <div class="projects">
+
+        <div class="card">
+            <img src="https://image.thum.io/get/width/800/https://wrapmyhijab.com/">
+            <div class="card-content">
+                <h3>Wrap My Hijab</h3>
+                <a href="https://wrapmyhijab.com/">Visit →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://image.thum.io/get/width/800/crop/800/https://msmandiandshawarma.com/">
+            <div class="card-content">
+                <h3>Mandi & Shawarma</h3>
+                <a href="https://msmandiandshawarma.com/">Visit →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://image.thum.io/get/width/800/https://snabtechnologies.com/">
+            <div class="card-content">
+                <h3>Snab Technologies</h3>
+                <a href="https://snabtechnologies.com/">Visit →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://image.thum.io/get/width/800/https://mh20holidays.com/">
+            <div class="card-content">
+                <h3>MH20 Holidays</h3>
+                <a href="https://mh20holidays.com/">Visit →</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://image.thum.io/get/width/800/https://darkgoldenrod-octopus-766645.hostingersite.com/">
+            <div class="card-content">
+                <h3>Upcoming Project</h3>
+                <a href="https://darkgoldenrod-octopus-766645.hostingersite.com/">View →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section hidden">
+    <h2>Services</h2>
+    <div class="services">
+        <div class="service">SEO (On-page & Off-page)</div>
+        <div class="service">Google & Meta Ads + Creatives</div>
+        <div class="service">Social Media Marketing</div>
+        <div class="service">Application Development</div>
+        <div class="service">Performance Optimization</div>
+        <div class="service">Custom Software</div>
+    </div>
+</section>
+
+<section class="section hidden">
+    <h2>How I Work</h2>
+    <div class="process">
+        <div class="step">Understand Business</div>
+        <div class="step">Plan Strategy</div>
+        <div class="step">Build & Design</div>
+        <div class="step">Launch & Optimize</div>
+    </div>
+</section>
+
+<section class="section hidden">
+    <h2>Client Feedback</h2>
+    <div class="testimonials">
+        <div class="testimonial">Professional and fast delivery.</div>
+        <div class="testimonial">Great communication & quality work.</div>
+        <div class="testimonial">Helped grow our online presence.</div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Let’s Build Something Amazing</h2>
+    <a class="btn" href="https://wa.me/9172340474">Contact Now</a>
+</section>
+
+<a class="whatsapp" href="https://wa.me/9172340474">💬</a>
+
+<footer>© 2026 Techzobers</footer>
+
+<script>
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add('show')}
+})
+});
+document.querySelectorAll('.hidden').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
