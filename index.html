@@ -1,469 +1,361 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Techzobers | Sain Rizwan</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sain Rizwan | Freelancer &amp; Web Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;800&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563eb",
+                        "primary-hover": "#1d4ed8",
+                    },
+                    fontFamily: {
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-md": ["Geist", "sans-serif"],
+                        "display-lg": ["Geist", "sans-serif"],
+                        "code": ["Geist", "monospace"],
+                        "display-lg-mobile": ["Geist", "sans-serif"],
+                        "headline-lg": ["Geist", "sans-serif"],
+                        "headline-md": ["Geist", "sans-serif"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "code": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    },
+                    spacing: {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px",
+                        "container-max": "1200px"
+                    }
+                },
+            },
+        }
+    </script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+        body {
+            background-color: #ffffff;
+            color: #111827;
+            -webkit-font-smoothing: antialiased;
+        }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#020617;
-    color:#fff;
-    overflow-x:hidden;
-}
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, visibility;
+        }
 
-/* BACKGROUND GLOW */
-body::before{
-    content:'';
-    position:fixed;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,#6366f1,transparent);
-    top:-200px;
-    left:-200px;
-    filter:blur(150px);
-    opacity:.4;
-    pointer-events: none;
-}
-body::after{
-    content:'';
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle,#ec4899,transparent);
-    bottom:-200px;
-    right:-200px;
-    filter:blur(150px);
-    opacity:.4;
-    pointer-events: none;
-}
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
 
-/* NAV */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    display:flex;
-    justify-content:space-between;
-    padding:15px 40px;
-    backdrop-filter:blur(12px);
-    background:rgba(0,0,0,0.3);
-    z-index:999;
-}
-
-/* HERO */
-.hero{
-    text-align:center;
-    padding:160px 20px 120px;
-}
-.hero h1{
-    font-size:52px;
-    background:linear-gradient(90deg,#6366f1,#06b6d4,#ec4899);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-.hero p{
-    max-width:700px;
-    margin:20px auto;
-    color:#cbd5f5;
-}
-
-/* BUTTON */
-.btn{
-    display:inline-block;
-    margin:10px;
-    padding:14px 28px;
-    border-radius:12px;
-    background:linear-gradient(90deg,#6366f1,#ec4899);
-    text-decoration:none;
-    color:#fff;
-    transition:.3s;
-}
-.btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 20px rgba(236,72,153,0.5);
-}
-
-/* SECTION */
-.section{padding:90px 10%}
-.section h2{
-    margin-bottom:40px;
-    font-size:30px;
-    background:linear-gradient(90deg,#06b6d4,#ec4899);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-/* CARD BASE */
-.card, .service, .step, .testimonial{
-    background:rgba(255,255,255,0.05);
-    border-radius:16px;
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,0.08);
-    transition:.4s;
-}
-
-/* PROJECT CARDS */
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-.card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
-.card-content{padding:20px}
-.card:hover{
-    transform:translateY(-12px) scale(1.02);
-    box-shadow:0 0 40px rgba(99,102,241,0.4);
-}
-
-/* SERVICES */
-.services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-.service{
-    padding:25px;
-    position:relative;
-}
-.service::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    border-radius:16px;
-    background:linear-gradient(90deg,#6366f1,#ec4899,#06b6d4);
-    opacity:0;
-    transition:.4s;
-    z-index:-1;
-}
-.service:hover::before{
-    opacity:.2;
-}
-.service:hover{
-    transform:translateY(-10px);
-}
-
-/* PROCESS */
-.process{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-.step{
-    padding:20px;
-}
-.step:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 25px rgba(6,182,212,0.4);
-}
-
-/* TESTIMONIAL */
-.testimonials{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-.testimonial{
-    padding:20px;
-}
-.testimonial:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px rgba(236,72,153,0.4);
-}
-
-/* CTA */
-.cta{
-    text-align:center;
-    padding:100px 20px;
-    background:linear-gradient(135deg,#6366f1,#ec4899,#06b6d4);
-}
-
-/* FLOAT BUTTON */
-.whatsapp{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    padding:15px;
-    border-radius:50%;
-    text-decoration:none;
-}
-
-/* ANIMATION */
-.hidden{opacity:0;transform:translateY(40px);transition:.8s}
-.show{opacity:1;transform:translateY(0)}
-
-footer{
-    text-align:center;
-    padding:20px;
-    color:#94a3b8;
-}
-
-/* ================= RESPONSIVE ================= */
-
-/* Tablets */
-@media (max-width: 1024px) {
-
-    nav {
-        padding: 15px 20px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero p {
-        font-size: 15px;
-        padding: 0 10px;
-    }
-
-    .section {
-        padding: 70px 5%;
-    }
-
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-
-    nav {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero {
-        padding: 120px 15px 80px;
-    }
-
-    .hero h1 {
-        font-size: 28px;
-        line-height: 1.3;
-    }
-
-    .hero p {
-        font-size: 14px;
-    }
-
-    .btn {
-        display: block;
-        width: 90%;
-        margin: 10px auto;
-        text-align: center;
-    }
-
-    .section h2 {
-        font-size: 22px;
-        text-align: center;
-    }
-
-    .projects,
-    .services,
-    .process,
-    .testimonials {
-        grid-template-columns: 1fr;
-    }
-
-    .card img {
-        height: 160px;
-    }
-
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-
-    .hero h1 {
-        font-size: 24px;
-    }
-
-    .hero p {
-        font-size: 13px;
-    }
-
-    .section {
-        padding: 60px 15px;
-    }
-
-}
-</style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d1d5db;
+        }
+    </style>
 </head>
-
-<body>
-
-<nav>
-    <h2>Techzobers</h2>
+<body class="overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
+<a class="font-display-lg text-headline-md tracking-tighter text-gray-900" href="#">Sain Rizwan</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md hover:bg-gray-50 transition-all duration-300 rounded px-2" href="#home">Home</a>
+<a class="text-gray-500 hover:text-gray-900 transition-colors font-label-md text-label-md hover:bg-gray-50 duration-300 rounded px-2" href="#about">About</a>
+<a class="text-gray-500 hover:text-gray-900 transition-colors font-label-md text-label-md hover:bg-gray-50 duration-300 rounded px-2" href="#skills">Skills</a>
+<a class="text-gray-500 hover:text-gray-900 transition-colors font-label-md text-label-md hover:bg-gray-50 duration-300 rounded px-2" href="#projects">Projects</a>
+<a class="text-gray-500 hover:text-gray-900 transition-colors font-label-md text-label-md hover:bg-gray-50 duration-300 rounded px-2" href="#contact">Contact</a>
+</div>
+<a class="hidden md:inline-flex items-center justify-center bg-primary text-white font-label-md text-label-md px-6 py-2.5 rounded-full hover:bg-primary-hover active:scale-95 transition-all font-medium" href="#contact">
+                Hire Me
+            </a>
+<button class="md:hidden text-gray-900 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+</div>
 </nav>
-
-<section class="hero">
-    <h1>Sain Rizwan / Techzobers</h1>
-    <p>
-        I help businesses build high-converting websites, grow online with SEO,
-        marketing, and scalable applications.
-    </p>
-
-    <a class="btn" href="https://wa.me/9172340474">Start Project</a>
-    <a class="btn" href="mailto:sainrizwan1@gmail.com">Email</a>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-white" id="home">
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center">
+<div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full mb-8">
+<img alt="Profile Avatar" class="w-full h-full rounded-full object-cover border border-gray-200 shadow-sm" src="https://lh3.googleusercontent.com/aida/AP1WRLv9AvQP7XRs12t156BdHzFuqhZ2koXSrjpfY7tunAkKzIFfZte4Ubi3hhu0ayVzw5X7a7beak4Ybmuts8EDwFrMHVy7LAvKr_pMqePFIkByTnQlIk1KghkDnxHsODAaJHV74i1Ur-BTUggNulPvY6qUJo5fjdpqeJnOj4Cj-e7VJfNWpkmiwweAl1SZOvsC3xPqwN2MlOHQ3yaU_mm2_iTAQqzU0lE8PAn_sh9ISDyQIq7qAiMxtSuLsg"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-gray-900 mb-6">
+                    Freelancer <span class="text-primary">&amp; Web Designer</span>
+</h1>
+<p class="font-body-lg text-body-lg text-gray-500 max-w-2xl mx-auto mb-10">
+                    I build scalable, modern, and user-friendly digital experiences. Specializing in high-performance web applications and clean interfaces.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="inline-flex items-center justify-center bg-primary text-white px-8 py-3 rounded-full font-label-md text-label-md font-medium transition-all hover:bg-primary-hover shadow-sm" href="#projects">
+                        View Projects
+                    </a>
+<a class="inline-flex items-center justify-center border border-gray-200 text-gray-700 px-8 py-3 rounded-full font-label-md text-label-md hover:bg-gray-50 transition-all" href="#contact">
+                        Get in Touch
+                    </a>
+</div>
+</div>
 </section>
+<!-- About Section -->
 
-<section class="section hidden">
-    <h2>Selected Work</h2>
-    <div class="projects">
-
-        <div class="card">
-            <img src="https://image.thum.io/get/width/800/https://wrapmyhijab.com/">
-            <div class="card-content">
-                <h3>Wrap My Hijab</h3>
-                <a href="https://wrapmyhijab.com/">Visit →</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://image.thum.io/get/width/800/crop/800/https://msmandiandshawarma.com/">
-            <div class="card-content">
-                <h3>Mandi & Shawarma</h3>
-                <a href="https://msmandiandshawarma.com/">Visit →</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://image.thum.io/get/width/800/https://snabtechnologies.com/">
-            <div class="card-content">
-                <h3>Snab Technologies</h3>
-                <a href="https://snabtechnologies.com/">Visit →</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://image.thum.io/get/width/800/https://mh20holidays.com/">
-            <div class="card-content">
-                <h3>MH20 Holidays</h3>
-                <a href="https://mh20holidays.com/">Visit →</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://image.thum.io/get/width/800/https://darkgoldenrod-octopus-766645.hostingersite.com/">
-            <div class="card-content">
-                <h3>Upcoming Project</h3>
-                <a href="https://darkgoldenrod-octopus-766645.hostingersite.com/">View →</a>
-            </div>
-        </div>
-
-    </div>
+<!-- Skills Section -->
+<section class="py-24 md:py-32 bg-white" id="skills">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop fade-in-section">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-gray-900 mb-4">Technical Arsenal</h2>
+<p class="font-body-md text-body-md text-gray-500 max-w-xl mx-auto">Mastery over the tools required to build elite digital products.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Frontend -->
+<div class="bg-white border border-gray-100 shadow-sm p-8 rounded-2xl transition-all hover:shadow-md">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">code</span>
+<h3 class="font-headline-md text-headline-md text-gray-900">Frontend</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">React</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">TypeScript</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Tailwind CSS</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Next.js</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Three.js</span>
+</div>
+</div>
+<!-- Backend -->
+<div class="bg-white border border-gray-100 shadow-sm p-8 rounded-2xl transition-all hover:shadow-md">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">dns</span>
+<h3 class="font-headline-md text-headline-md text-gray-900">Backend</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Node.js</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Python</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">PostgreSQL</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">GraphQL</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Redis</span>
+</div>
+</div>
+<!-- Tools & Platforms -->
+<div class="bg-white border border-gray-100 shadow-sm p-8 rounded-2xl transition-all hover:shadow-md">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">build</span>
+<h3 class="font-headline-md text-headline-md text-gray-900">Tools &amp; Platforms</h3>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Figma</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Docker</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">AWS</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Git</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Vercel</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">Shopify</span>
+<span class="font-code text-code px-3 py-1.5 rounded-md bg-gray-50 text-gray-700 border border-gray-200">WordPress</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section class="section hidden">
-    <h2>Services</h2>
-    <div class="services">
-
-        <div class="service">
-            <h3>🔍 SEO (On-page & Off-page)</h3>
-            <p>
-                I optimize your website structure, content, and performance to help it rank higher on Google.
-                This includes keyword optimization, technical SEO, and authority building through backlinks.
-            </p>
-            <p style="color:#94a3b8;font-size:14px;">
-                Result: More visibility, organic traffic, and qualified leads.
-            </p>
-        </div>
-
-        <div class="service">
-            <h3>📈 Google & Meta Ads + Creatives</h3>
-            <p>
-                I set up and manage high-converting ad campaigns on Google and Meta platforms,
-                along with designing engaging ad creatives and posters that capture attention.
-            </p>
-            <p style="color:#94a3b8;font-size:14px;">
-                Result: Increased reach, targeted leads, and better ROI.
-            </p>
-        </div>
-
-        <div class="service">
-            <h3>📱 Social Media Marketing</h3>
-            <p>
-                Complete social media handling including content planning, post design,
-                consistent publishing, and audience engagement across platforms.
-            </p>
-            <p style="color:#94a3b8;font-size:14px;">
-                Result: Strong brand presence and better engagement.
-            </p>
-        </div>
-
-        <div class="service">
-            <h3>⚙️ Application Development</h3>
-            <p>
-                I build custom applications tailored to your business needs—whether it's dashboards,
-                internal systems, or user-facing platforms.
-            </p>
-            <p style="color:#94a3b8;font-size:14px;">
-                Result: Streamlined operations and scalable systems.
-            </p>
-        </div>
-
-        <div class="service">
-            <h3>⚡ Website Performance Optimization</h3>
-            <p>
-                I improve your website speed, responsiveness, and overall performance
-                to enhance user experience and SEO rankings.
-            </p>
-            <p style="color:#94a3b8;font-size:14px;">
-                Result: Faster loading, lower bounce rates, higher conversions.
-            </p>
-        </div>
-
-        <div class="service">
-            <h3>💻 Custom Software Solutions</h3>
-            <p>
-                I develop tailored software solutions to automate workflows,
-                solve business problems, and improve efficiency.
-            </p>
-            <p style="color:#94a3b8;font-size:14px;">
-                Result: Smarter processes and long-term scalability.
-            </p>
-        </div>
-
-    </div>
+<!-- Projects Section -->
+<section class="py-24 md:py-32 bg-gray-50" id="projects">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop fade-in-section">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-gray-900 mb-4">Featured Work</h2>
+<p class="font-body-md text-body-md text-gray-500 max-w-xl">A selection of recent projects showcasing architectural depth and UI precision.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Project 1 -->
+<a class="group block bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all hover:shadow-md" href="https://wrapmyhijab.com/" target="_blank" rel="noopener noreferrer">
+<div class="h-64 overflow-hidden bg-gray-100">
+<img alt="Wrap My Hijab" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://wrapmyhijab.com/cdn/shop/files/wmh.jpg?v=1772221106"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-gray-900 group-hover:text-primary transition-colors">Wrap My Hijab</h3>
+<span class="material-symbols-outlined text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform duration-300">open_in_new</span>
+</div>
+<p class="font-body-md text-body-md text-gray-500 mb-6 line-clamp-2">A premium modest-fashion e-commerce store built for smooth browsing, fast checkout, and standout product presentation.</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">Shopify</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">E-commerce</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">UI Design</span>
+</div>
+</div>
+</a>
+<!-- Project 2 -->
+<a class="group block bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all hover:shadow-md" href="https://msmandiandshawarma.com/" target="_blank" rel="noopener noreferrer">
+<div class="h-64 overflow-hidden bg-gray-100">
+<img alt="MS Mandi and Shawarma" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://msmandiandshawarma.com/wp-content/uploads/2025/06/pexels-aboodi-18698237-1024x1024.jpg"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-gray-900 group-hover:text-primary transition-colors">MS Mandi &amp; Shawarma</h3>
+<span class="material-symbols-outlined text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform duration-300">open_in_new</span>
+</div>
+<p class="font-body-md text-body-md text-gray-500 mb-6 line-clamp-2">A mouth-watering restaurant website with menu showcase, brand story, and easy ways for customers to reach out and order.</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">WordPress</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">Elementor</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">Restaurant</span>
+</div>
+</div>
+</a>
+<!-- Project 3 -->
+<a class="group block bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all hover:shadow-md" href="https://snabtechnologies.com/" target="_blank" rel="noopener noreferrer">
+<div class="h-64 overflow-hidden bg-gray-100">
+<img alt="SNAB Technologies" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://snabtechnologies.com/wp-content/uploads/2025/12/pexels-rezwan-1216589-scaled.jpg"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-gray-900 group-hover:text-primary transition-colors">SNAB Technologies</h3>
+<span class="material-symbols-outlined text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform duration-300">open_in_new</span>
+</div>
+<p class="font-body-md text-body-md text-gray-500 mb-6 line-clamp-2">A corporate site for a fire-protection and MEP engineering firm, built to clearly present services and build client trust.</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">WordPress</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">Elementor</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">Corporate</span>
+</div>
+</div>
+</a>
+<!-- Project 4 -->
+<a class="group block bg-white border border-gray-100 shadow-sm rounded-2xl overflow-hidden transition-all hover:shadow-md" href="https://darkgoldenrod-octopus-766645.hostingersite.com/" target="_blank" rel="noopener noreferrer">
+<div class="h-64 overflow-hidden bg-gray-100">
+<img alt="Maple Clinic" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://darkgoldenrod-octopus-766645.hostingersite.com/wp-content/uploads/2026/03/edited-photo-6-scaled.png"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-gray-900 group-hover:text-primary transition-colors">Maple Clinic</h3>
+<span class="material-symbols-outlined text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform duration-300">open_in_new</span>
+</div>
+<p class="font-body-md text-body-md text-gray-500 mb-6 line-clamp-2">A calming, trust-building website for a skin, hair, and weight-loss clinic, with clear service pages and booking prompts.</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">WordPress</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">Elementor</span>
+<span class="font-code text-[12px] px-2.5 py-1 rounded-md bg-gray-50 text-gray-600 border border-gray-200">Healthcare</span>
+</div>
+</div>
+</a>
+</div>
+</div>
 </section>
-
-<section class="section hidden">
-    <h2>How I Work</h2>
-    <div class="process">
-        <div class="step">Understand Business</div>
-        <div class="step">Plan Strategy</div>
-        <div class="step">Build & Design</div>
-        <div class="step">Launch & Optimize</div>
-    </div>
+<!-- Contact Section -->
+<section class="py-24 md:py-32 bg-white" id="contact">
+<div class="max-w-xl mx-auto px-margin-mobile md:px-margin-desktop fade-in-section">
+<div class="text-center mb-12">
+<h2 class="font-headline-lg text-headline-lg text-gray-900 mb-4">Initialize Connection</h2>
+<p class="font-body-md text-body-md text-gray-500">Have a project in mind or want to discuss architecture? Send a signal.</p>
+</div>
+<form action="https://formsubmit.co/sainrizwan1@gmail.com" class="bg-white border border-gray-100 shadow-sm p-8 md:p-10 rounded-2xl space-y-6" method="POST">
+<input name="_subject" type="hidden" value="New message from portfolio site"/>
+<input name="_captcha" type="hidden" value="false"/>
+<input name="_template" type="hidden" value="table"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-gray-600" for="name">Name</label>
+<input class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-md text-body-md" id="name" name="name" placeholder="John Doe" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-gray-600" for="email">Email</label>
+<input class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-md text-body-md" id="email" name="email" placeholder="john@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-gray-600" for="message">Message</label>
+<textarea class="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-md text-body-md resize-none" id="message" name="message" placeholder="Enter your transmission..." required="" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-white font-label-md text-label-md font-medium py-4 rounded-lg hover:bg-primary-hover transition-colors flex items-center justify-center gap-2" type="submit">
+                        Send Transmission <span class="material-symbols-outlined text-sm">send</span>
+</button>
+</form>
+</div>
 </section>
-
-
-
-<section class="cta">
-    <h2>Let’s Build Something Amazing</h2>
-    <a class="btn" href="https://wa.me/9172340474">Contact Now</a>
-</section>
-
-<a class="whatsapp" href="https://wa.me/9172340474">💬</a>
-
-<footer>© 2026 Techzobers</footer>
-
+</main>
+<!-- Footer -->
+<footer class="bg-white w-full py-12 border-t border-gray-100">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="font-headline-md text-gray-900 mb-6 md:mb-0">
+                Sain Rizwan
+            </div>
+<div class="flex items-center gap-6 mb-6 md:mb-0">
+<a class="text-gray-500 hover:text-gray-900 transition-colors font-code text-code" href="https://www.linkedin.com/in/sain-rizwan-484996289?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="text-gray-500 hover:text-gray-900 transition-colors font-code text-code" href="https://www.instagram.com/_rizwan_sain?igsh=MXdoZ3I0MHpsNXVqYw==" rel="noopener noreferrer" target="_blank">Instagram</a>
+</div>
+<div class="font-code text-code text-gray-400">
+                © 2026 Sain Rizwan. Built for the elite.
+            </div>
+</div>
+</footer>
 <script>
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add('show')}
-})
-});
-document.querySelectorAll('.hidden').forEach(el=>observer.observe(el));
-</script>
+        // Scroll animation observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
 
-</body>
-</html>
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Active nav logic simple implementation
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.className = 'text-gray-500 hover:text-gray-900 transition-colors font-label-md text-label-md hover:bg-gray-50 duration-300 rounded px-2';
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.className = 'text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md hover:bg-gray-50 transition-all duration-300 rounded px-2';
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>
